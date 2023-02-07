@@ -1,7 +1,9 @@
 *
 !.gitignore
 !README.md
-!app/
-!app/**
+!assertion_signing_key_pair_generator.py
+!main.py
+!Procfile
+!runtime.txt
 !requirements.txt
 app/.env
