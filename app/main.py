@@ -1,4 +1,6 @@
 import os
+import polars as pl
+from dotenv import load_dotenv
 from flask import Flask, request, abort
 
 from linebot import (
@@ -12,6 +14,7 @@ from linebot.models import (
 )
 
 app = Flask(__name__)
+load_dotenv()
 
 line_bot_api = LineBotApi(os.environ["CHANNEL_ACCESS_TOKEN"])
 handler = WebhookHandler(os.environ["CHANNEL_SECRET"])
@@ -34,6 +37,9 @@ def callback():
         abort(400)
 
     return 'OK'
+
+def res_data(text):
+    return text
 
 
 @handler.add(MessageEvent, message=TextMessage)
