@@ -6,4 +6,5 @@
 !Procfile
 !runtime.txt
 !requirements.txt
-app/.env
+!master/
+!master/*.csv
