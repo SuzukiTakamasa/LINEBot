@@ -3,4 +3,5 @@
 !README.md
 !app/
 !app/**
+!requirements.txt
 app/.env
