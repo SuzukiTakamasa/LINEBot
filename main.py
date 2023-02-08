@@ -48,7 +48,7 @@ def res_data(text):
             res = f"図鑑No.{record[0]}\n"
             res += f"{record[1]}\n"
             res += f"第{record[2]}世代\n" if re.findall(r'\d', record[2]) else "ヒスイ\n"
-            res += f"タイプ:{record[3]}/{record[4]}\n"
+            res += f"タイプ:{record[3]}/{record[4]}\n" if len(record[4]) else f"タイプ:{record[3]}/-\n"
             res += f"HP:{record[5]}\n"
             res += f"攻撃:{record[6]}\n"
             res += f"防御:{record[7]}\n"
