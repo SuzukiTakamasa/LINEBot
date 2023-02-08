@@ -3,6 +3,7 @@
 !README.md
 !assertion_signing_key_pair_generator.py
 !main.py
+!test.py
 !Procfile
 !runtime.txt
 !requirements.txt

@@ -1,5 +1,6 @@
 import os
-import polars as pl
+import re
+import csv
 from dotenv import load_dotenv
 from flask import Flask, request, abort
 
@@ -39,14 +40,34 @@ def callback():
     return 'OK'
 
 def res_data(text):
-    return text
-
+    with open('./master/master.csv', 'r') as f:
+        data = [row for row in csv.reader(f)]
+        
+    for record in data:
+        if record[1] == text:
+            res = f"No.{record[0]}\n"
+            res += f"{record[1]}\n"
+            res += f"第{record[2]}世代\n" if re.findall(r'\d', record[2]) else "ヒスイ\n"
+            res += f"タイプ:{record[3]}/{record[4]}\n"
+            res += f"HP:{record[5]}\n"
+            res += f"攻撃:{record[6]}\n"
+            res += f"防御:{record[7]}\n"
+            res += f"特攻:{record[8]}\n"
+            res += f"特防:{record[9]}\n"
+            res += f"素早さ:{record[10]}\n"
+            res += f"合計:{record[11]}"
+            break
+        else:
+            res = "マッチするポケモンが見つかりませんでした。"
+    return res
+        
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    res = res_data(event.message.text)
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
+        TextSendMessage(text=res))
 
 
 if __name__ == "__main__":
