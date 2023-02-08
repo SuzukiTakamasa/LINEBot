@@ -1,6 +1,6 @@
 # LINE bot named pokemondatabot
 
-Read the QR code below and add this LINEbot as a friend.
+Read the QR code below and add this LINE bot as a friend.
 You will get the info of the status of Pokemon you submit.
 
 ※Only 151 1st generation Pokemon are supported now.
