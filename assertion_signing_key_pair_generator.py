@@ -1,13 +1,12 @@
 from jwcrypto import jwk
 import json
 from typing import Tuple
-import os
 
 
 def key_pair_generate() -> Tuple[dict, dict]:
     key = jwk.JWK.generate(kty='RSA', alg='RS256', use='sig', size=2048)
 
-    private_key =key.export_private()
+    private_key = key.export_private()
     public_key = key.export_public()
 
     return private_key, public_key
