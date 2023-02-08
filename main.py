@@ -45,7 +45,7 @@ def res_data(text):
         
     for record in data:
         if record[1] == text:
-            res = f"No.{record[0]}\n"
+            res = f"図鑑No.{record[0]}\n"
             res += f"{record[1]}\n"
             res += f"第{record[2]}世代\n" if re.findall(r'\d', record[2]) else "ヒスイ\n"
             res += f"タイプ:{record[3]}/{record[4]}\n"
