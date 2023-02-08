@@ -58,7 +58,7 @@ def res_data(text):
             res += f"合計:{record[11]}"
             break
         else:
-            res = "マッチするポケモンが見つかりませんでした。"
+            res = "マッチするポケモンが見つかりませんでした。\n(現在第1世代までのポケモンのみサポートしています。)"
     return res
         
 
