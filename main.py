@@ -58,7 +58,10 @@ def res_status(text):
             res += f"特攻:{record[8]}\n"
             res += f"特防:{record[9]}\n"
             res += f"素早さ:{record[10]}\n"
-            res += f"合計:{record[11]}"
+            res += f"合計:{record[11]}\n"
+            res += f"特性1:{record[12]}\n" if len(record[12]) else f"特性1:-\n"
+            res += f"特性2:{record[13]}\n" if len(record[13]) else f"特性2:-\n"
+            res += f"夢特性:{record[14]}" if len(record[14]) else f"夢特性:-"
             break
         elif text in (record[12], record[13], record[14]):
             have_trait = f"{record[1]}(夢)" if text in record[14] else f"{record[1]}" 
