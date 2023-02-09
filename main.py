@@ -39,14 +39,17 @@ def callback():
 
     return 'OK'
 
-def res_data(text):
+def res_status(text):
     with open('./master/master.csv', 'r') as f:
         data = [row for row in csv.reader(f)]
+
+        res = ""
+        have_trait_list = []
         
     for record in data:
         if record[1] == text:
-            res = f"図鑑No.{record[0]}\n"
-            res += f"{record[1]}\n"
+            res += f"【{record[1]}】\n"
+            res += f"図鑑No.{record[0]}\n"
             res += f"第{record[2]}世代\n" if re.findall(r'\d', record[2]) else "ヒスイ\n"
             res += f"タイプ:{record[3]}/{record[4]}\n" if len(record[4]) else f"タイプ:{record[3]}/-\n"
             res += f"HP:{record[5]}\n"
@@ -57,14 +60,22 @@ def res_data(text):
             res += f"素早さ:{record[10]}\n"
             res += f"合計:{record[11]}"
             break
-        else:
-            res = "マッチするポケモンが見つかりませんでした。\n(現在第1世代までのポケモンのみサポートしています。)"
+        elif text in (record[12], record[13], record[14]):
+            have_trait = f"{record[1]}(夢)" if text in record[14] else f"{record[1]}" 
+            have_trait_list.append(have_trait)
+            res = f"【特性：「{text}」を持つポケモン】\n"
+            for have_traits in have_trait_list:
+                res += f"{have_traits}" if have_traits == have_trait_list[len(have_trait_list)-1] else f"{have_traits}\n"
+
+    if not len(res):
+        res = "マッチするポケモン・特性が見つかりませんでした。\n(現在第2世代までのポケモン/初代までの特性のみサポートしています。)"
+
     return res
-        
+
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    res = res_data(event.message.text)
+    res = res_status(event.message.text)
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=res))
