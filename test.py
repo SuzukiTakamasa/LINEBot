@@ -1,5 +1,5 @@
 import sys
-from main import res_status
+from main import res_data
 
 if __name__ == '__main__':
-    print(res_status(sys.argv[1]))
+    print(res_data(sys.argv[1]))
