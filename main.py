@@ -43,8 +43,8 @@ def res_data(text):
     with open('./master/master.csv', 'r') as f:
         data = [row for row in csv.reader(f)]
 
-        res = ""
-        have_trait_list = []
+    res = ""
+    have_trait_list = []
         
     for record in data:
         if record[1] == text:
