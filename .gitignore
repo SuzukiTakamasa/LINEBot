@@ -9,3 +9,4 @@
 !requirements.txt
 !master/
 !master/*.csv
+!deploy.sh
