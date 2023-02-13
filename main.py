@@ -72,7 +72,7 @@ def res_data(text):
                 res += have_traits if have_traits == have_trait_list[len(have_trait_list)-1] else f"{have_traits}\n"
         elif record[1].startswith(text):
             have_alias_list.append(record[1])
-            res = "以下のワードで検索してください\n"
+            res = "以下のワードで検索してください。\n"
             for have_aliases in have_alias_list:
                 res += have_aliases if have_aliases == have_alias_list[len(have_alias_list)-1] else f"{have_aliases}\n"
 
