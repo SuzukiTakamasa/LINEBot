@@ -67,14 +67,17 @@ def res_data(text):
         elif text in (record[12], record[13], record[14]):
             have_trait = f"{record[1]}(夢)" if text in record[14] else record[1]
             have_trait_list.append(have_trait)
-            res = f"【特性：「{text}」を持つポケモン】\n"
-            for have_traits in have_trait_list:
-                res += have_traits if have_traits == have_trait_list[len(have_trait_list)-1] else f"{have_traits}\n"
         elif record[1].startswith(text):
             have_alias_list.append(record[1])
-            res = "以下のワードで検索してください。\n"
-            for have_aliases in have_alias_list:
-                res += have_aliases if have_aliases == have_alias_list[len(have_alias_list)-1] else f"{have_aliases}\n"
+    
+    if len(have_trait_list):
+        res += f"【特性：「{text}」を持つポケモン】\n"
+        for have_traits in have_trait_list:
+            res += have_traits if have_traits == have_trait_list[len(have_trait_list)-1] else f"{have_traits}\n"
+    elif len(have_alias_list):
+        res += "以下のワードで検索してください。\n"
+        for have_aliases in have_alias_list:
+            res += have_aliases if have_aliases == have_alias_list[len(have_alias_list)-1] else f"{have_aliases}\n"
 
     if not len(res):
         res = "マッチするポケモン・特性が見つかりませんでした。\n(現在第5世代までのポケモンのみサポートしています。)"
