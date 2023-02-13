@@ -71,7 +71,7 @@ def res_data(text):
                 res += f"{have_traits}" if have_traits == have_trait_list[len(have_trait_list)-1] else f"{have_traits}\n"
 
     if not len(res):
-        res = "マッチするポケモン・特性が見つかりませんでした。\n(現在第4世代までのポケモンのみサポートしています。)"
+        res = "マッチするポケモン・特性が見つかりませんでした。\n(現在第5世代までのポケモンのみサポートしています。)"
 
     return res
 
