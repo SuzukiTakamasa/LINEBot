@@ -51,7 +51,7 @@ def res_data(text):
         if record[1] == text:
             res += f"【{record[1]}】\n"
             res += f"図鑑No.{record[0]}\n"
-            res += f"第{record[2]}世代\n" if re.findall(r'\d', record[2]) else "ヒスイ\n"
+            res += f"第{record[2]}世代\n" if re.findall(r'\d', record[2]) else f"{record[2]}\n"
             res += f"タイプ:{record[3]}/{record[4]}\n" if len(record[4]) else f"タイプ:{record[3]}/-\n"
             res += f"HP:{record[5]}\n"
             res += f"攻撃:{record[6]}\n"
@@ -80,7 +80,7 @@ def res_data(text):
             res += have_aliases if have_aliases == have_alias_list[len(have_alias_list)-1] else f"{have_aliases}\n"
 
     if not len(res):
-        res = "マッチするポケモン・特性が見つかりませんでした。\n(現在第5世代までのポケモンのみサポートしています。)"
+        res += "マッチするポケモン・特性が見つかりませんでした。\n(現在第6世代までのポケモンのみサポートしています。)"
 
     return res
 
