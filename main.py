@@ -80,7 +80,7 @@ def res_data(text):
             res += have_aliases if have_aliases == have_alias_list[len(have_alias_list)-1] else f"{have_aliases}\n"
 
     if not len(res):
-        res += "マッチするポケモン・特性が見つかりませんでした。\n(現在第6世代までのポケモンのみサポートしています。)"
+        res += "マッチするポケモン・特性が見つかりませんでした。\n(現在第7世代までのポケモンのみサポートしています。)"
 
     return res
 
