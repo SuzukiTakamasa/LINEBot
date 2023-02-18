@@ -53,4 +53,4 @@ Then, the bot replies all Pokemons which have that trait like below:
 バチンウニ
 ```
 
-If there is something incorrect information, let me know by DM.
+Report If there is something incorrect.

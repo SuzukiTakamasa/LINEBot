@@ -65,8 +65,7 @@ def res_data(text):
                               f"夢特性:{record[14]}"))
             break
         elif text in (record[12], record[13], record[14]):
-            have_trait = f"{record[1]}(夢)" if text in record[14] else record[1]
-            have_trait_list.append(have_trait)
+            have_trait_list.append(f"{record[1]}(夢)" if text in record[14] else record[1])
         elif record[1].startswith(text):
             have_alias_list.append(record[1])
     
