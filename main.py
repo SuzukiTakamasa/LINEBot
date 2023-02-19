@@ -79,6 +79,8 @@ def res_data(text):
         res += f"【「{text}」タイプを持つポケモン】\n"
         res += "\n".join(have_type_list)
         res += "\n※AND検索をしたい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)"
+        if text == "ゴースト":
+            res += "\n※ポケモンの「ゴースト」の種族値は「ゴースト(ポケモン)」で検索してください。"
     elif len(have_both_types_list):
         text = re.sub(r"\s", r"/", text)
         res += f"【「{text}」タイプのポケモン】\n"
