@@ -44,6 +44,7 @@ def res_data(text):
         data = [row for row in csv.reader(f)]
 
     res = ""
+    have_type_list = []
     have_trait_list = []
     have_alias_list = []
         
@@ -64,20 +65,25 @@ def res_data(text):
                               f"特性2:{record[13]}",
                               f"夢特性:{record[14]}"))
             break
+        elif text in (record[3], record[4]):
+            have_type_list.append(f"{record[1]}")
         elif text in (record[12], record[13], record[14]):
             have_trait_list.append(f"{record[1]}(夢)" if text in record[14] else record[1])
         elif record[1].startswith(text):
             have_alias_list.append(record[1])
-    
-    if len(have_trait_list):
+
+    if len(have_type_list):
+        res += f"【「{text}」タイプを持つポケモン】\n"
+        res += "\n".join(have_type_list)
+    elif len(have_trait_list):
         res += f"【特性：「{text}」を持つポケモン】\n"
-        res += "\n".join(have_traits for have_traits in have_trait_list)
+        res += "\n".join(have_trait_list)
     elif len(have_alias_list):
         res += "以下のワードで検索してください。\n"
-        res += "\n".join(have_aliases for have_aliases in have_alias_list)
+        res += "\n".join(have_alias_list)
 
     if not len(res):
-        res += "マッチするポケモン・特性が見つかりませんでした。"
+        res += "マッチするポケモン・タイプ・特性が見つかりませんでした。"
 
     return res
 
