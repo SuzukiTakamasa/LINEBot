@@ -27,10 +27,26 @@ HP:35
 夢特性:ひらいしん
 ```
 
-...or enter a trait (e.g. ひらいしん).
+...or enter a type(s) or a trait (e.g. ひらいしん).
 Then, the bot replies all Pokemons which have that trait like below:
 
 ```
+【「でんき」タイプを持つポケモン】
+ピカチュウ
+ピカチュウ(相棒)
+ライチュウ
+ライチュウ(アローラのすがた)
+イシツブテ(アローラのすがた)
+ゴローン(アローラのすがた)
+ゴローニャ(アローラのすがた)
+コイル
+レアコイル
+ビリリダマ
+...
+```
+
+```
+【特性：「ひらいしん」を持つポケモン】
 ピカチュウ(夢)
 ピカチュウ(相棒)(夢)
 ライチュウ(夢)
@@ -41,16 +57,7 @@ Then, the bot replies all Pokemons which have that trait like below:
 サイドン
 トサキント(夢)
 アズマオウ(夢)
-ピチュー(夢)
-メガジュカイン
-ラクライ
-ライボルト
-プラスル(夢)
-ドサイドン
-シママ
-ゼブライカ
-トゲデマル
-バチンウニ
+...
 ```
 
 Report if there is something incorrect.
