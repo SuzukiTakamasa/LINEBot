@@ -78,9 +78,9 @@ def res_data(text):
     if len(have_type_list):
         res += f"【「{text}」タイプを持つポケモン】\n"
         res += "\n".join(have_type_list)
-        res += "\n※AND検索をしたい場合は全角スペースで区切って検索してください。(例：ほのお　ひこう)"
+        res += "\n※AND検索をしたい場合は全角または半角スペースで区切って検索してください。(例：ほのお　ひこう)"
     elif len(have_both_types_list):
-        text = text.replace("　", "/")
+        text = re.sub(r"\s", r"/", text)
         res += f"【「{text}」タイプのポケモン】\n"
         res += "\n".join(have_both_types_list)
     elif len(have_trait_list):
@@ -91,7 +91,7 @@ def res_data(text):
         res += "\n".join(have_alias_list)
 
     if not len(res):
-        res += "マッチするポケモン・タイプ・特性が見つかりませんでした。\n※タイプでAND検索をしたい場合は全角スペースで区切って検索してください。(例：ほのお　ひこう)"
+        res += "マッチするポケモン・タイプ・特性が見つかりませんでした。\n※タイプでAND検索をしたい場合は全角またはスペースで区切って検索してください。(例：ほのお　ひこう)"
 
     return res
 
