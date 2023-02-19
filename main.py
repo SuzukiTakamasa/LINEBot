@@ -68,7 +68,7 @@ def res_data(text):
             break
         elif text in (record[3], record[4]):
             have_type_list.append(f"{record[1]}")
-        elif re.findall(r'^{}.+{}$'.format(record[3], record[4]), text) or re.findall(r'^{}.+{}$'.format(record[4], record[3]), text):
+        elif re.findall(r'^{}\s{}$'.format(record[3], record[4]), text) or re.findall(r'^{}\s{}$'.format(record[4], record[3]), text):
             have_both_types_list.append(record[1])
         elif text in (record[12], record[13], record[14]):
             have_trait_list.append(f"{record[1]}(夢)" if text in record[14] else record[1])
@@ -78,7 +78,7 @@ def res_data(text):
     if len(have_type_list):
         res += f"【「{text}」タイプを持つポケモン】\n"
         res += "\n".join(have_type_list)
-        res += "\n※AND検索をしたい場合は全角スペースで区切って検索してください(例：ほのお　ひこう)"
+        res += "\n※AND検索をしたい場合は全角スペースで区切って検索してください。(例：ほのお　ひこう)"
     elif len(have_both_types_list):
         text = text.replace("　", "/")
         res += f"【「{text}」タイプのポケモン】\n"
@@ -91,7 +91,7 @@ def res_data(text):
         res += "\n".join(have_alias_list)
 
     if not len(res):
-        res += "マッチするポケモン・タイプ・特性が見つかりませんでした。"
+        res += "マッチするポケモン・タイプ・特性が見つかりませんでした。\n※タイプでAND検索をしたい場合は全角スペースで区切って検索してください。(例：ほのお　ひこう)"
 
     return res
 
