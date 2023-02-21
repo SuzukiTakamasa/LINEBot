@@ -60,4 +60,5 @@ Then, the bot replies all Pokemons which have that trait like below:
 ...
 ```
 
+Search by egg group is now in preparation.
 Report if there is something incorrect.
