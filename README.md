@@ -28,7 +28,7 @@ HP:35
 ```
 
 ...or enter a type(s), a trait, or an egg group.
-Then, the bot replies all Pokemons which have that trait like below:
+Then, the bot replies all Pokemons which have that type(s), trait, or egg group like below:
 
 ```
 【「でんき」タイプを持つポケモン】
