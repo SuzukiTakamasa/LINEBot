@@ -47,6 +47,7 @@ def res_data(text):
     have_type_list = []
     have_both_types_list = []
     have_trait_list = []
+    have_egg_group_list = []
     have_alias_list = []
         
     for record in data:
@@ -64,7 +65,9 @@ def res_data(text):
                               f"合計:{record[11]}",
                               f"特性1:{record[12]}",
                               f"特性2:{record[13]}",
-                              f"夢特性:{record[14]}"))
+                              f"夢特性:{record[14]}",
+                              f"卵グループ1:{record[15]}",
+                              f"卵グループ2:{record[16]}"))
             break
         elif text in (record[3], record[4]):
             have_type_list.append(f"{record[1]}")
@@ -72,6 +75,8 @@ def res_data(text):
             have_both_types_list.append(record[1])
         elif text in (record[12], record[13], record[14]):
             have_trait_list.append(f"{record[1]}(夢)" if text in record[14] else record[1])
+        elif text in (record[15], record[16]):
+            have_egg_group_list.append(record[1])
         elif record[1].startswith(text):
             have_alias_list.append(record[1])
 
@@ -88,6 +93,9 @@ def res_data(text):
     elif len(have_trait_list):
         res += f"【特性：「{text}」を持つポケモン】\n"
         res += "\n".join(have_trait_list)
+    elif len(have_egg_group_list):
+        res += f"【卵グループが「{text}」のポケモン】"
+        res += "\n".join(have_egg_group_list)
     elif len(have_alias_list):
         res += "以下のワードで検索してください。\n"
         res += "\n".join(have_alias_list)
