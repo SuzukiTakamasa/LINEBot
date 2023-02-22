@@ -94,14 +94,14 @@ def res_data(text):
         res += f"【特性：「{text}」を持つポケモン】\n"
         res += "\n".join(have_trait_list)
     elif len(have_egg_group_list):
-        res += f"【卵グループが「{text}」のポケモン】"
+        res += f"【卵グループが「{text}」のポケモン】\n"
         res += "\n".join(have_egg_group_list)
     elif len(have_alias_list):
         res += "以下のワードで検索してください。\n"
         res += "\n".join(have_alias_list)
 
     if not len(res):
-        res += "マッチするポケモン・タイプ・特性が見つかりませんでした。\n※タイプでAND検索をしたい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)"
+        res += "マッチするポケモン・タイプ・特性・卵グループが見つかりませんでした。\n※タイプでAND検索をしたい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)"
 
     return res
 

@@ -27,7 +27,7 @@ HP:35
 夢特性:ひらいしん
 ```
 
-...or enter a type(s) or a trait (e.g. ひらいしん).
+...or enter a type(s), a trait, or an egg group.
 Then, the bot replies all Pokemons which have that trait like below:
 
 ```
@@ -60,5 +60,20 @@ Then, the bot replies all Pokemons which have that trait like below:
 ...
 ```
 
-Search by egg group is now in preparation.
+```
+【卵グループが「りくじょう」のポケモン】
+コラッタ
+コラッタ(アローラのすがた)
+ラッタ
+ラッタ(アローラのすがた)
+アーボ
+アーボック
+ピカチュウ
+ピカチュウ(相棒)
+ライチュウ
+ライチュウ(アローラのすがた)
+...
+```
+
+
 Report if there is something incorrect.
