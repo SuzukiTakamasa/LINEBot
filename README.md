@@ -1,4 +1,4 @@
-# LINE bot named pokemondatabot
+# pokemondatabot
 
 Read the QR code below and add this LINE bot as a friend.
 You will get the info of the status of Pokemons you submit.
