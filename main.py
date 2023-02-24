@@ -39,7 +39,7 @@ def callback():
 
     return 'OK'
 
-def res_data(text):
+def res_data(text) -> dict[str, str | None]:
     with open('./master/master.csv', 'r') as f:
         data = [row for row in csv.reader(f)]
 
