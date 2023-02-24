@@ -97,7 +97,7 @@ def res_data(text):
         res["text"] = f"【卵グループが「{text}」のポケモン】\n"
         res["text"] += "\n".join(have_egg_group_list)
     elif len(have_alias_list):
-        res["text"] = "以下のワードで検索してください。\n"
+        res["text"] = "以下のワードで検索してください。"
         res["quick_reply"] = QuickReply(items=[QuickReplyButton(action=MessageAction(text=aliases, label=aliases)) for aliases in have_alias_list])
 
     if not len(res):
