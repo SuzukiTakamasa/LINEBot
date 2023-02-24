@@ -11,7 +11,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, QuickReply, QuickReplyButton
+    MessageEvent, TextMessage, TextSendMessage, QuickReply, QuickReplyButton, MessageAction
 )
 
 app = Flask(__name__)
@@ -43,7 +43,7 @@ def res_data(text):
     with open('./master/master.csv', 'r') as f:
         data = [row for row in csv.reader(f)]
 
-    res = ""
+    res = {}
     have_type_list = []
     have_both_types_list = []
     have_trait_list = []
@@ -52,22 +52,22 @@ def res_data(text):
         
     for record in data:
         if record[1] == text:
-            res += "\n".join((f"【{record[1]}】",
-                              f"図鑑No.{record[0]}",
-                              f"第{record[2]}世代" if re.findall(r'\d', record[2]) else f"{record[2]}",
-                              f"タイプ:{record[3]}/{record[4]}",
-                              f"HP:{record[5]}",
-                              f"攻撃:{record[6]}",
-                              f"防御:{record[7]}",
-                              f"特攻:{record[8]}",
-                              f"特防:{record[9]}",
-                              f"素早さ:{record[10]}",
-                              f"合計:{record[11]}",
-                              f"特性1:{record[12]}",
-                              f"特性2:{record[13]}",
-                              f"夢特性:{record[14]}",
-                              f"卵グループ1:{record[15]}",
-                              f"卵グループ2:{record[16]}"))
+            res["text"] = "\n".join((f"【{record[1]}】",
+                                   f"図鑑No.{record[0]}",
+                                   f"第{record[2]}世代" if re.findall(r'\d', record[2]) else f"{record[2]}",
+                                   f"タイプ:{record[3]}/{record[4]}",
+                                   f"HP:{record[5]}",
+                                   f"攻撃:{record[6]}",
+                                   f"防御:{record[7]}",
+                                   f"特攻:{record[8]}",
+                                   f"特防:{record[9]}",
+                                   f"素早さ:{record[10]}",
+                                   f"合計:{record[11]}",
+                                   f"特性1:{record[12]}",
+                                   f"特性2:{record[13]}",
+                                   f"夢特性:{record[14]}",
+                                   f"卵グループ1:{record[15]}",
+                                   f"卵グループ2:{record[16]}"))
             break
         elif text in (record[3], record[4]):
             have_type_list.append(f"{record[1]}")
@@ -81,27 +81,27 @@ def res_data(text):
             have_alias_list.append(record[1])
 
     if len(have_type_list):
-        res += f"【「{text}」タイプを持つポケモン】\n"
-        res += "\n".join(have_type_list)
-        res += "\n※AND検索をしたい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)"
+        res["text"] = f"【「{text}」タイプを持つポケモン】\n"
+        res["text"] += "\n".join(have_type_list)
+        res["text"] += "\n※AND検索をしたい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)"
         if text == "ゴースト":
-            res += "\n※ポケモンの「ゴースト」の種族値は「ゴースト(ポケモン)」で検索してください。"
+            res["text"] += "\n※ポケモンの「ゴースト」の種族値は「ゴースト(ポケモン)」で検索してください。"
     elif len(have_both_types_list):
         text = re.sub(r"\s", r"/", text)
-        res += f"【「{text}」タイプのポケモン】\n"
-        res += "\n".join(have_both_types_list)
+        res["text"] = f"【「{text}」タイプのポケモン】\n"
+        res["text"] += "\n".join(have_both_types_list)
     elif len(have_trait_list):
-        res += f"【特性：「{text}」を持つポケモン】\n"
-        res += "\n".join(have_trait_list)
+        res["text"] = f"【特性：「{text}」を持つポケモン】\n"
+        res["text"] += "\n".join(have_trait_list)
     elif len(have_egg_group_list):
-        res += f"【卵グループが「{text}」のポケモン】\n"
-        res += "\n".join(have_egg_group_list)
+        res["text"] = f"【卵グループが「{text}」のポケモン】\n"
+        res["text"] += "\n".join(have_egg_group_list)
     elif len(have_alias_list):
-        res += "以下のワードで検索してください。\n"
-        res += "\n".join(have_alias_list)
+        res["text"] = "以下のワードで検索してください。\n"
+        res["quick_reply"] = QuickReply(items=[QuickReplyButton(action=MessageAction(text=aliases)) for aliases in have_alias_list])
 
     if not len(res):
-        res += "マッチするポケモン・タイプ・特性・卵グループが見つかりませんでした。\n※タイプでAND検索をしたい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)"
+        res["text"] = "マッチするポケモン・タイプ・特性・卵グループが見つかりませんでした。\n※タイプでAND検索をしたい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)"
 
     return res
 
@@ -111,7 +111,7 @@ def handle_message(event):
     res = res_data(event.message.text)
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=res))
+        TextSendMessage(**res))
 
 
 if __name__ == "__main__":
