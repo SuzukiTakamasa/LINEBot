@@ -98,6 +98,7 @@ def res_data(text):
         res["text"] += "\n".join(have_egg_group_list)
     elif len(have_alias_list):
         res["text"] = "以下のワードで検索してください。\n"
+        res["label"] = "label"
         res["quick_reply"] = QuickReply(items=[QuickReplyButton(action=MessageAction(text=aliases)) for aliases in have_alias_list])
 
     if not len(res):
