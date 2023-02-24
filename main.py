@@ -98,8 +98,7 @@ def res_data(text):
         res["text"] += "\n".join(have_egg_group_list)
     elif len(have_alias_list):
         res["text"] = "以下のワードで検索してください。\n"
-        res["label"] = "label"
-        res["quick_reply"] = QuickReply(items=[QuickReplyButton(action=MessageAction(text=aliases)) for aliases in have_alias_list])
+        res["quick_reply"] = QuickReply(items=[QuickReplyButton(action=MessageAction(text=aliases, label=aliases)) for aliases in have_alias_list])
 
     if not len(res):
         res["text"] = "マッチするポケモン・タイプ・特性・卵グループが見つかりませんでした。\n※タイプでAND検索をしたい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)"
