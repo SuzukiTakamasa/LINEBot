@@ -77,7 +77,7 @@ def res_data(text) -> dict[str, str | None]:
             have_trait_list.append(f"{record[1]}(夢)" if text in record[14] else record[1])
         elif text in (record[15], record[16]):
             have_egg_group_list.append(record[1])
-        elif re.findall(r'^{}(.+)$'.format(text), record[1]):
+        elif re.findall(r'^{}\(.+\)$'.format(text), record[1]):
             have_alias_list.append(record[1])
 
     if len(have_type_list):
