@@ -103,7 +103,7 @@ def res_data(text) -> dict[str, str | None]:
         res["quick_reply"] = QuickReply(items=[QuickReplyButton(action=MessageAction(text=aliases, label=aliases)) for aliases in have_alias_list])
 
     if not len(res):
-        res["text"] = "マッチするポケモン・タイプ・特性・卵グループが見つかりませんでした。\n※タイプでAND検索をしたい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)"
+        res["text"] = "マッチするポケモン・タイプ・特性・卵グループが見つかりませんでした。\n※複合タイプで検索したい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)"
 
     return res
 
