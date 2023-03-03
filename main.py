@@ -85,7 +85,7 @@ def res_data(text) -> dict[str, str | None]:
     if len(have_type_list):
         res["text"] = f"【「{text}」タイプを持つポケモン】\n"
         res["text"] += "\n".join(have_type_list)
-        res["text"] += "\n※AND検索をしたい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)"
+        res["text"] += "\n※複合タイプで検索したい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)"
         if text == "ゴースト":
             res["text"] += "\n※ポケモンの「ゴースト」の種族値は「ゴースト(ポケモン)」で検索してください。"
     elif len(have_both_types_list):
