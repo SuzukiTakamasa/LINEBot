@@ -7,11 +7,6 @@ class PayloadFormat:
     "type": "box",
     "layout": "vertical",
     "spacing": "md",
-    "action": {
-      "type": "uri",
-      "label": "Action",
-      "uri": "https://linecorp.com"
-    },
     "contents": [
       {
         "type": "box",
