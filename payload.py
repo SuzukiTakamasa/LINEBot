@@ -3,18 +3,6 @@
 class PayloadFormat:
     status = {
   "type": "bubble",
-  "hero": {
-    "type": "image",
-    "url": "https://zukan.pokemon.co.jp/zukan-api/up/images/index/afa02eaba4c39820fc57f4e8abaeea80.png",
-    "size": "full",
-    "aspectRatio": "20:13",
-    "aspectMode": "cover",
-    "action": {
-      "type": "uri",
-      "label": "Action",
-      "uri": "https://linecorp.com"
-    }
-  },
   "body": {
     "type": "box",
     "layout": "vertical",
