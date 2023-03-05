@@ -645,4 +645,28 @@ class PayloadFormat:
   }
 }
 
-    not_matched = {}
+    not_matched = {
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "md",
+    "action": {
+      "type": "uri",
+      "label": "Action",
+      "uri": "https://linecorp.com"
+    },
+    "contents": [
+      {
+        "type": "text",
+        "text": "※マッチするポケモン・タイプ・特性",
+        "contents": []
+      },
+      {
+        "type": "text",
+        "text": "卵グループが見つかりませんでした。",
+        "contents": []
+      }
+    ]
+  }
+}
