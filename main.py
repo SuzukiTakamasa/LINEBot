@@ -4,7 +4,8 @@ import csv
 from dotenv import load_dotenv
 from flask import Flask, request, abort
 
-from payload import PayloadFormat as PF
+from payload.payload_format import PayloadFormat as PF
+from payload.payload_content import PayloadContent as PC
 
 from linebot import (
     LineBotApi, WebhookHandler
