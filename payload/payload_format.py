@@ -2,6 +2,12 @@
 
 class PayloadFormat:
     status_format = {
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "md",
+    "contents": [
       {
         "type": "box",
         "layout": "horizontal",
@@ -16,18 +22,20 @@ class PayloadFormat:
           },
           {
             "type": "image",
-            "url": "", #image_url
+            "url": "", #dot_image_url
             "align": "end",
             "size": "xxs"
           }
         ]
       },
       {
-      "type": "box",
-        "layout": "baseline",
+        "type": "box",
+        "layout": "vertical",
         "spacing": "sm",
         "contents": []
       }
+    ]
+  }
     }
 
     type_format = {
