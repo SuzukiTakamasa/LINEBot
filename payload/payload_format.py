@@ -1,4 +1,4 @@
-from payload_content import PayloadContent as PC
+from payload.payload_content import PayloadContent as PC
 
 class PayloadFormat:
     status_format = {
