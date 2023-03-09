@@ -1,6 +1,10 @@
-from payload.payload_content import PayloadContent as PC
+
 
 class PayloadFormat:
+    ITEM_NAME = ("タイプ", "HP", "攻撃", "防御", "特攻", "特防", "素早さ", "合計",
+                 "特性1", "特性2", "夢特性", "卵グループ1", "卵グループ2")
+    BUTTON_LABEL = ("同じタイプを持つポケモンを検索", "同じ特性を持つポケモンを検索", "同じ卵グループを持つポケモンを検索")
+
     status_format = {
   "type": "bubble",
   "body": {
@@ -125,7 +129,7 @@ class PayloadFormat:
   }
 }
 
-    aliasz_format = {
+    alias_format = {
   "type": "bubble",
   "body": {
     "type": "box",
@@ -180,53 +184,120 @@ class PayloadFormat:
   }
 }
 
-    @classmethod
-    def create_status_data(self, record) -> dict:
-        self.status_format["body"]["contents"][0]["contents"][0]["text"] += record[1]
-        self.status_format["body"]["contents"][0]["contents"][1]["url"] += record[18]
+    status_body_items = {
+            "type": "box",
+            "layout": "baseline",
+            "contents": [
+              {
+                "type": "text",
+                "text": "", #ITEM_NAME
+                "weight": "bold",
+                "margin": "sm",
+                "contents": []
+              }
+            ]
+          }
+    
+    status_body_items_value = {
+        "type": "text",
+        "text": "", #value
+        "align": "end",
+        "contents": []
+        }
+    
+    status_body_button_label = {
+        "type": "text",
+        "text": "", #BUTTON_LABEL
+        "margin": "lg",
+        "contents": []
+    }
 
-        for item, value in zip(range(0, 14), range(3, 17)):
-            each_item = PC.status_body_items
-            each_item["contents"][0]["text"] = PC.ITEM_NAME[item]
-            each_item["contents"][1]["text"] = record[value]
+    status_body_button = {
+        "type": "button",
+        "action": {
+          "type": "message",
+          "label": "", #button label
+          "text": "" #submit text
+        },
+        "color": "#1D2B6BFF",
+        "height": "sm",
+        "style": "primary"
+    }
 
-            self.status_format["body"]["contents"][1]["contents"].append(each_item)
-        
-        PC.status_body_button_label["text"] = PC.BUTTON_LABEL[0]
-        self.status_format["body"]["contents"][1]["contents"].append(PC.status_body_button_label)
-
-        PC.status_body_button["label"] = f"{record[3]}タイプで検索" if record[4] == "-" else f"{record[3]}/{record[4]}タイプで検索"
-        PC.status_body_button["text"] = f"{record[3]}" if record[4] == "-" else f"{record[3]} {record[4]}"
-        self.status_format["body"]["contents"][1]["contents"].append(PC.status_body_button)
-
-        PC.status_body_button_label["text"] = PC.BUTTON_LABEL[1]
-        self.status_format["body"]["contents"][1]["contents"].append(PC.status_body_button_label)
-
-        PC.status_body_button["label"] = f"「{record[12]}」で検索"
-        PC.status_body_button["text"] = f"{record[12]}"
-        self.status_format["body"]["contents"][1]["contents"].append(PC.status_body_button)
-
-        if record[13] != "-":
-            PC.status_body_button["label"] = f"「{record[13]}」で検索"
-            PC.status_body_button["text"] = f"{record[13]}"
-            self.status_format["body"]["contents"][1]["contents"].append(PC.status_body_button)
-        
-        if record[14] != "-":
-            PC.status_body_button["label"] = f"「{record[14]}」で検索"
-            PC.status_body_button["text"] = f"{record[14]}"
-            self.status_format["body"]["contents"][1]["contents"].append(PC.status_body_button)
-        
-        PC.status_body_button_label["text"] = PC.BUTTON_LABEL[2]
-        self.status_format["body"]["contents"][1]["contents"].append(PC.status_body_button_label)
-
-        PC.status_body_button["label"] = f"「{record[15]}」で検索"
-        PC.status_body_button["text"] = f"{record[15]}"
-        self.status_format["body"]["contents"][1]["contents"].append(PC.status_body_button)
-
-        if record[16] != "-":
-            PC.status_body_button["label"] = f"「{record[16]}」で検索"
-            PC.status_body_button["text"] = f"{record[16]}"
-            self.status_format["body"]["contents"][1]["contents"].append(PC.status_body_button)
-        
-        return self.status_format
-
+    type_body = {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "image",
+                "url": "", #dot_image_url
+                "align": "start",
+                "size": "xxs"
+              },
+              {
+                "type": "text",
+                "text": "", #name
+                "weight": "bold",
+                "size": "lg",
+                "align": "end",
+                "margin": "sm",
+                "contents": []
+              }
+            ]
+          }
+    
+    trait_body = {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "image",
+                "url": "", #dot_image_url
+                "align": "start",
+                "size": "xxs"
+              },
+              {
+                "type": "text",
+                "text": "", #name
+                "weight": "bold",
+                "size": "lg",
+                "align": "end",
+                "margin": "sm",
+                "contents": []
+              }
+            ]
+          }
+    
+    egg_group_body = {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+              {
+                "type": "image",
+                "url": "", #odt_iamge_url
+                "align": "start",
+                "size": "xxs"
+              },
+              {
+                "type": "text",
+                "text": "", #name
+                "weight": "bold",
+                "size": "lg",
+                "align": "end",
+                "margin": "sm",
+                "contents": []
+              }
+            ]
+          }
+    
+    alias_body = {
+            "type": "button",
+            "action": {
+              "type": "message",
+              "label": "", #name
+              "text": "" #name
+            },
+            "color": "#1D2B6BFF",
+            "height": "sm",
+            "style": "primary"
+          }
