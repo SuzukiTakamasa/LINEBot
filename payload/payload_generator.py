@@ -61,19 +61,63 @@ class PayloadGenerator:
         return PF.status_format
     
     @classmethod
-    def create_have_type_list(self, text: str, have_type_list: list) -> dict:
+    def create_have_type_list(self, text: str, have_type_dict: dict) -> dict:
+        #Set a title
+        PF.type_format["body"]["contents"][0]["text"] = f"「{text}」タイプを持つポケモン"
+
+        #Set contents
+        for k, v in have_type_dict.items():
+            PF.type_body["contents"][0]["url"] = v
+            PF.type_body["contents"][1]["text"] = k
+            PF.type_format["body"]["contents"][1]["contents"].append(PF.type_body)
+
         return PF.type_format
     
     @classmethod
-    def create_have_both_types_list(self, text: str, have_both_types_list: list) -> dict:
+    def create_have_both_types_list(self, text: str, have_both_types_dict: dict) -> dict:
+        #Replace blank to slash
+        text = re.sub(r"\s", r"/", text)
+
+        #Set a title
+        PF.type_format["body"]["contents"][0]["text"] = f"「{text}」タイプを持つポケモン"
+
+        #Set contents
+        for k, v in have_both_types_dict.items():
+            PF.type_body["contents"][0]["url"] = v
+            PF.type_body["contents"][1]["text"] = k
+            PF.type_format["body"]["contents"][1]["contents"].append(PF.type_body)
+            
         return PF.type_format
     
     @classmethod
-    def create_have_trait_list(self, text: str, have_trait_list: list) -> dict:
+    def create_have_trait_list(self, text: str, have_trait_dict: dict) -> dict:
+        #Set a title
+        PF.trait_format["body"]["contents"][0]["text"] = f"「特性{text}」を持つポケモン"
+
+        #Set contents
+        for k, v in have_trait_dict.items():
+            PF.trait_body["contents"][0]["url"] = v
+            PF.trait_body["contents"][1]["text"] = k
+            PF.trait_format["body"]["contents"][1]["contents"].append(PF.trait_body)
+
         return PF.trait_format
     
-    def create_have_egg_group_list(self, text: str, have_egg_group_list: list) -> dict:
+    def create_have_egg_group_list(self, text: str, have_egg_group_dict: dict) -> dict:
+        #Set a title
+        PF.egg_group_format["body"]["contents"][0]["text"] = f"「卵グループが{text}」のポケモン"
+
+        #Set contents
+        for k, v in have_egg_group_dict.items():
+            PF.egg_group_body["contents"][0]["url"] = v
+            PF.egg_group_body["contents"][1]["text"] = k
+            PF.egg_group_format["body"]["contents"][1]["contents"].append(PF.egg_group_body)
+
         return PF.egg_group_format
     
     def create_alias_list(self, text: str, have_alias_list: list) -> dict:
+        #Set contents
+        for i in have_alias_list:
+            PF.alias_body["action"]["label"] = PF.alias_body["action"]["text"] = i
+            PF.alias_format.append(PF.alias_body)
+
         return PF.alias_format
