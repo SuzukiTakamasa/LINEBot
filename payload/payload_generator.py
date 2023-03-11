@@ -114,7 +114,7 @@ class PayloadGenerator:
 
         return PF.egg_group_format
     
-    def create_alias_list(self, text: str, have_alias_list: list) -> dict:
+    def create_alias_list(self, have_alias_list: list) -> dict:
         #Set contents
         for i in have_alias_list:
             PF.alias_body["action"]["label"] = PF.alias_body["action"]["text"] = i
