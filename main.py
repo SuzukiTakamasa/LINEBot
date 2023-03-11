@@ -89,7 +89,7 @@ def handle_message(event: dict):
     res = res_data(event.message.text)
     line_bot_api.reply_message(
         event.reply_token,
-        res)
+        res["contents"])
 
 
 if __name__ == "__main__":
