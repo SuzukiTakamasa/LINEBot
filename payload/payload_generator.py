@@ -120,6 +120,6 @@ class PayloadGenerator:
         #Set contents
         for i in have_alias_list:
             PF.alias_body["action"]["label"] = PF.alias_body["action"]["text"] = i
-            PF.alias_format.append(PF.alias_body)
+            PF.alias_format["body"]["contents"][1]["contents"].append(PF.alias_body)
 
         return PF.alias_format
