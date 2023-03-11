@@ -54,7 +54,8 @@ def res_data(text: str) -> dict | str:
         
     for record in data:
         if record[1] == text:
-            res = FlexSendMessage(contents=PG.create_status_data(record)["contents"])
+            payload_contents = PG.create_status_data(record)
+            res = FlexSendMessage(contents=payload_contents["contents"])
             break
         elif text in (record[3], record[4]):
             have_type_dict |= {record[1]: record[18]}
@@ -68,15 +69,20 @@ def res_data(text: str) -> dict | str:
             have_alias_list.append(record[1])
 
     if len(have_type_dict):
-        res = FlexSendMessage(contents=PG.create_have_type_list(text, have_type_dict)["contents"])
+        payload_contents = PG.create_have_type_list(text, have_type_dict)
+        res = FlexSendMessage(contents=payload_contents["contents"])
     elif len(have_both_types_dict):
-        res = FlexSendMessage(contents=PG.create_have_both_types_list(text, have_both_types_dict)["contents"])
+        payload_contents = PG.create_have_both_types_list(text, have_both_types_dict)
+        res = FlexSendMessage(contents=payload_contents["contents"])
     elif len(have_trait_dict):
-        res = FlexSendMessage(contents=PG.create_have_trait_list(text, have_trait_dict)["contents"])
+        payload_contents = PG.create_have_trait_list(text, have_trait_dict)
+        res = FlexSendMessage(contents=payload_contents["contents"])
     elif len(have_egg_group_dict):
-        res = FlexSendMessage(contents=PG.create_have_egg_group_list(text, have_egg_group_dict)["contents"])
+        payload_contents = PG.create_have_egg_group_list(text, have_egg_group_dict)
+        res = FlexSendMessage(contents=payload_contents["contents"])
     elif len(have_alias_list):
-        res = FlexSendMessage(contents=PG.create_alias_list(have_alias_list)["contents"])
+        payload_contents = PG.create_alias_list(have_alias_list)
+        res = FlexSendMessage(contents=payload_contents["contents"])
 
     if not res:
         res = TextSendMessage(text="マッチするポケモン・タイプ・特性・卵グループが見つかりませんでした。\n※複合タイプで検索したい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)")
