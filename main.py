@@ -84,7 +84,7 @@ def res_data(text: str) -> dict | str:
     return res
 
 
-#@handler.add(MessageEvent, message=TextMessage)
+@handler.add(MessageEvent, message=TextMessage)
 def handle_message(event: dict):
     res = res_data(event.message.text)
     line_bot_api.reply_message(
