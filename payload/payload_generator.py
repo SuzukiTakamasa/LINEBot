@@ -14,9 +14,9 @@ class PayloadGenerator:
         PF.status_format["body"]["contents"][1]["contents"].append(PF.status_body_items)
 
         #Each status item
-        for item, value in zip(range(0, 14), range(3, 17)):
+        for item, value in zip(range(0, 13), range(3, 16)):
             PF.status_body_items["contents"][0]["text"] = PF.ITEM_NAME[item]
-            PF.status_body_items["contents"][1]["text"] = record[value]
+            PF.status_body_items_value["text"] = record[value]
             PF.status_format["body"]["contents"][1]["contents"].append(PF.status_body_items)
         
         #Search related pokemon button by "type"
@@ -102,6 +102,7 @@ class PayloadGenerator:
 
         return PF.trait_format
     
+    @classmethod
     def create_have_egg_group_list(self, text: str, have_egg_group_dict: dict) -> dict:
         #Set a title
         PF.egg_group_format["body"]["contents"][0]["text"] = f"「卵グループが{text}」のポケモン"
@@ -114,6 +115,7 @@ class PayloadGenerator:
 
         return PF.egg_group_format
     
+    @classmethod
     def create_alias_list(self, have_alias_list: list) -> dict:
         #Set contents
         for i in have_alias_list:
