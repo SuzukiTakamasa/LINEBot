@@ -48,11 +48,6 @@ class PayloadFormat:
     "type": "box",
     "layout": "vertical",
     "spacing": "md",
-    "action": {
-      "type": "uri",
-      "label": "Action",
-      "uri": ""
-    },
     "contents": [
       {
         "type": "text",
@@ -77,11 +72,6 @@ class PayloadFormat:
     "type": "box",
     "layout": "vertical",
     "spacing": "md",
-    "action": {
-      "type": "uri",
-      "label": "Action",
-      "uri": ""
-    },
     "contents": [
       {
         "type": "text",
@@ -106,11 +96,6 @@ class PayloadFormat:
     "type": "box",
     "layout": "vertical",
     "spacing": "md",
-    "action": {
-      "type": "uri",
-      "label": "Action",
-      "uri": ""
-    },
     "contents": [
       {
         "type": "text",
@@ -135,11 +120,6 @@ class PayloadFormat:
     "type": "box",
     "layout": "vertical",
     "spacing": "md",
-    "action": {
-      "type": "uri",
-      "label": "Action",
-      "uri": ""
-    },
     "contents": [
       {
         "type": "text",
@@ -164,11 +144,6 @@ class PayloadFormat:
     "type": "box",
     "layout": "vertical",
     "spacing": "md",
-    "action": {
-      "type": "uri",
-      "label": "Action",
-      "uri": ""
-    },
     "contents": [
       {
         "type": "text",
