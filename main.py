@@ -54,7 +54,7 @@ def res_data(text: str) -> dict:
         
     for record in data:
         if record[1] == text:
-            res = FlexSendMessage(contents=PG.create_status_data(record))
+            res = FlexSendMessage(alt_text="status", contents=PG.create_status_data(record))
             break
         elif text in (record[3], record[4]):
             have_type_dict |= {record[1]: record[18]}
@@ -68,15 +68,15 @@ def res_data(text: str) -> dict:
             have_alias_list.append(record[1])
 
     if len(have_type_dict):
-        res = FlexSendMessage(contents=PG.create_have_type_list(text, have_type_dict))
+        res = FlexSendMessage(alt_text="type", contents=PG.create_have_type_list(text, have_type_dict))
     elif len(have_both_types_dict):
-        res = FlexSendMessage(contents=PG.create_have_both_types_list(text, have_both_types_dict))
+        res = FlexSendMessage(alt_text="both type", contents=PG.create_have_both_types_list(text, have_both_types_dict))
     elif len(have_trait_dict):
-        res = FlexSendMessage(contents=PG.create_have_trait_list(text, have_trait_dict))
+        res = FlexSendMessage(alt_text="trait", contents=PG.create_have_trait_list(text, have_trait_dict))
     elif len(have_egg_group_dict):
-        res = FlexSendMessage(contents=PG.create_have_egg_group_list(text, have_egg_group_dict))
+        res = FlexSendMessage(alt_text="egg group", contents=PG.create_have_egg_group_list(text, have_egg_group_dict))
     elif len(have_alias_list):
-        res = FlexSendMessage(contents=PG.create_alias_list(have_alias_list))
+        res = FlexSendMessage(alt_text="alias", contents=PG.create_alias_list(have_alias_list))
 
     if not res:
         res = TextSendMessage(text="マッチするポケモン・タイプ・特性・卵グループが見つかりませんでした。\n※複合タイプで検索したい場合は全角または半角スペースで区切って検索してください。\n(例：ほのお　ひこう)")
