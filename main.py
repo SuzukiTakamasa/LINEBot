@@ -54,7 +54,8 @@ def res_data(text: str) -> dict:
         
     for record in data:
         if record[1] == text:
-            res = FlexSendMessage(alt_text="status", contents=PG.create_status_data(record))
+            payload = PG.create_status_data(record)
+            res = FlexSendMessage(alt_text="status", contents=payload)
             break
         elif text in (record[3], record[4]):
             have_type_dict |= {record[1]: record[18]}
