@@ -1,5 +1,4 @@
 import re
-import json
 from payload.payload_format import PayloadFormat as PF
 
 class PayloadGenerator:
@@ -59,7 +58,7 @@ class PayloadGenerator:
             PF.status_body_button["text"] = f"{record[16]}"
             PF.status_format["body"]["contents"][1]["contents"].append(PF.status_body_button)
         
-        return json.dumps(PF.status_format)
+        return PF.status_format
     
     @classmethod
     def create_have_type_list(self, text: str, have_type_dict: dict) -> dict:
@@ -72,7 +71,7 @@ class PayloadGenerator:
             PF.type_body["contents"][1]["text"] = k
             PF.type_format["body"]["contents"][1]["contents"].append(PF.type_body)
 
-        return json.dumps(PF.type_format)
+        return PF.type_format
     
     @classmethod
     def create_have_both_types_list(self, text: str, have_both_types_dict: dict) -> dict:
@@ -88,7 +87,7 @@ class PayloadGenerator:
             PF.type_body["contents"][1]["text"] = k
             PF.type_format["body"]["contents"][1]["contents"].append(PF.type_body)
             
-        return json.dumps(PF.type_format)
+        return PF.type_format
     
     @classmethod
     def create_have_trait_list(self, text: str, have_trait_dict: dict) -> dict:
@@ -101,7 +100,7 @@ class PayloadGenerator:
             PF.trait_body["contents"][1]["text"] = k
             PF.trait_format["body"]["contents"][1]["contents"].append(PF.trait_body)
 
-        return json.dumps(PF.trait_format)
+        return PF.trait_format
     
     @classmethod
     def create_have_egg_group_list(self, text: str, have_egg_group_dict: dict) -> dict:
@@ -114,7 +113,7 @@ class PayloadGenerator:
             PF.egg_group_body["contents"][1]["text"] = k
             PF.egg_group_format["body"]["contents"][1]["contents"].append(PF.egg_group_body)
 
-        return json.dumps(PF.egg_group_format)
+        return PF.egg_group_format
     
     @classmethod
     def create_alias_list(self, have_alias_list: list) -> dict:
@@ -123,4 +122,4 @@ class PayloadGenerator:
             PF.alias_body["action"]["label"] = PF.alias_body["action"]["text"] = i
             PF.alias_format["body"]["contents"][1]["contents"].append(PF.alias_body)
 
-        return json.dumps(PF.alias_format)
+        return PF.alias_format
