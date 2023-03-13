@@ -3,7 +3,7 @@ from payload.payload_format import PayloadFormat as PF
 
 class PayloadGenerator:
     @classmethod
-    def create_status_data(self, record: list) -> dict:
+    def create_status_data(cls, record: list) -> dict:
         #Pokemon name and dot image URL 
         PF.status_format["body"]["contents"][0]["contents"][0]["text"] += record[1]
         PF.status_format["body"]["contents"][0]["contents"][1]["url"] += record[18]
@@ -61,7 +61,7 @@ class PayloadGenerator:
         return PF.status_format
     
     @classmethod
-    def create_have_type_list(self, text: str, have_type_dict: dict) -> dict:
+    def create_have_type_list(cls, text: str, have_type_dict: dict) -> dict:
         #Set a title
         PF.type_format["body"]["contents"][0]["text"] = f"「{text}」タイプを持つポケモン"
 
@@ -74,7 +74,7 @@ class PayloadGenerator:
         return PF.type_format
     
     @classmethod
-    def create_have_both_types_list(self, text: str, have_both_types_dict: dict) -> dict:
+    def create_have_both_types_list(cls, text: str, have_both_types_dict: dict) -> dict:
         #Replace blank to slash
         text = re.sub(r"\s", r"/", text)
 
@@ -90,7 +90,7 @@ class PayloadGenerator:
         return PF.type_format
     
     @classmethod
-    def create_have_trait_list(self, text: str, have_trait_dict: dict) -> dict:
+    def create_have_trait_list(cls, text: str, have_trait_dict: dict) -> dict:
         #Set a title
         PF.trait_format["body"]["contents"][0]["text"] = f"「特性{text}」を持つポケモン"
 
@@ -103,7 +103,7 @@ class PayloadGenerator:
         return PF.trait_format
     
     @classmethod
-    def create_have_egg_group_list(self, text: str, have_egg_group_dict: dict) -> dict:
+    def create_have_egg_group_list(cls, text: str, have_egg_group_dict: dict) -> dict:
         #Set a title
         PF.egg_group_format["body"]["contents"][0]["text"] = f"「卵グループが{text}」のポケモン"
 
@@ -116,7 +116,7 @@ class PayloadGenerator:
         return PF.egg_group_format
     
     @classmethod
-    def create_alias_list(self, have_alias_list: list) -> dict:
+    def create_alias_list(cls, have_alias_list: list) -> dict:
         #Set contents
         for i in have_alias_list:
             PF.alias_body["action"]["label"] = PF.alias_body["action"]["text"] = i
