@@ -382,7 +382,7 @@ class PayloadGenerator:
             "style": "primary"
         })
         else:
-            status["body"]["contents"][9] = {"type": "spacer", "size": "xs"}
+            status["body"]["contents"].append({"type": "spacer", "size": "xs"})
 
         return status
 
