@@ -366,8 +366,6 @@ class PayloadGenerator:
             "height": "sm",
             "style": "primary"
         })
-        else:
-            status["body"]["contents"].insert(6, {"type": "spacer", "size": "xs"})
         
         if record[16] != "-":
             status["body"]["contents"].append({
@@ -381,8 +379,6 @@ class PayloadGenerator:
             "height": "sm",
             "style": "primary"
         })
-        else:
-            status["body"]["contents"].append({"type": "spacer", "size": "xs"})
 
         return status
 
