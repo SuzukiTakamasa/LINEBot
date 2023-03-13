@@ -3,7 +3,7 @@
 class PayloadGenerator:
     @classmethod
     def create_status_data(cls, record: list) -> dict:
-        return {
+        status =  {
   "type": "bubble",
   "body": {
     "type": "box",
@@ -334,17 +334,6 @@ class PayloadGenerator:
         "style": "primary"
       },
       {
-        "type": "button",
-        "action": {
-          "type": "message",
-          "label": f"「{record[13]}」で検索",
-          "text": record[13]
-        },
-        "color": "#1D2B6BFF",
-        "height": "sm",
-        "style": "primary"
-      } if record[13] != "-" else {"type": "spacer", "size": "xs"},
-      {
         "type": "text",
         "text": "同じ卵グループを持つポケモンを検索",
         "margin": "lg",
@@ -360,21 +349,42 @@ class PayloadGenerator:
         "color": "#1D2B6BFF",
         "height": "sm",
         "style": "primary"
-      },
-      {
-        "type": "button",
-        "action": {
-          "type": "message",
-          "label": f"「{record[16]}」で検索",
-          "text": record[16]
-        },
-        "color": "#1D2B6BFF",
-        "height": "sm",
-        "style": "primary"
-      } if record[16] != "-" else {"type": "spacer", "size": "xs"}
+      }
     ]
   }
 }
+
+        if record[13] != "-":
+            status["body"]["contents"][6] = {
+            "type": "button",
+            "action": {
+            "type": "message",
+            "label": f"「{record[13]}」で検索",
+            "text": record[13]
+            },
+            "color": "#1D2B6BFF",
+            "height": "sm",
+            "style": "primary"
+        }
+        else:
+            status["body"]["contents"][6] = {"type": "spacer", "size": "xs"}
+        
+        if record[16] != "-":
+            status["body"]["contents"][9] = {
+            "type": "button",
+            "action": {
+            "type": "message",
+            "label": f"「{record[16]}」で検索",
+            "text": record[16]
+            },
+            "color": "#1D2B6BFF",
+            "height": "sm",
+            "style": "primary"
+        }
+        else:
+            status["body"]["contents"][9] = {"type": "spacer", "size": "xs"}
+
+        return status
 
     
     @classmethod
@@ -413,7 +423,7 @@ class PayloadGenerator:
                 "text": k,
                 "weight": "bold",
                 "size": "lg",
-                "align": "end",
+                "align": "start",
                 "margin": "sm",
                 "contents": []
               }
@@ -462,7 +472,7 @@ class PayloadGenerator:
                 "text": k,
                 "weight": "bold",
                 "size": "lg",
-                "align": "end",
+                "align": "start",
                 "margin": "sm",
                 "contents": []
               }
@@ -510,7 +520,7 @@ class PayloadGenerator:
                 "text": k,
                 "weight": "bold",
                 "size": "lg",
-                "align": "end",
+                "align": "start",
                 "margin": "sm",
                 "contents": []
               }
