@@ -355,7 +355,7 @@ class PayloadGenerator:
 }
 
         if record[13] != "-":
-            status["body"]["contents"][6] = {
+            status["body"]["contents"].insert(6, {
             "type": "button",
             "action": {
             "type": "message",
@@ -365,9 +365,9 @@ class PayloadGenerator:
             "color": "#1D2B6BFF",
             "height": "sm",
             "style": "primary"
-        }
+        })
         else:
-            status["body"]["contents"][6] = {"type": "spacer", "size": "xs"}
+            status["body"]["contents"].insert(6, {"type": "spacer", "size": "xs"})
         
         if record[16] != "-":
             status["body"]["contents"].append({
