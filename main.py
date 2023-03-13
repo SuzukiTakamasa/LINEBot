@@ -47,7 +47,6 @@ def res_data(text: str) -> dict:
 
     res : FlexSendMessage | TextSendMessage | None = None
     have_type_dict :dict = {}
-    have_both_types_dict :dict = {}
     have_trait_dict :dict = {}
     have_egg_group_dict :dict = {}
     have_alias_list :list = []
@@ -56,10 +55,8 @@ def res_data(text: str) -> dict:
         if record[1] == text:
             res = FlexSendMessage(alt_text="status", contents=PG.create_status_data(record))
             break
-        elif text in (record[3], record[4]):
+        elif text in (record[3], record[4]) or re.findall(r'^{}\s{}$'.format(record[3], record[4]), text) or re.findall(r'^{}\s{}$'.format(record[4], record[3]), text):
             have_type_dict |= {record[1]: record[18]}
-        elif re.findall(r'^{}\s{}$'.format(record[3], record[4]), text) or re.findall(r'^{}\s{}$'.format(record[4], record[3]), text):
-            have_both_types_dict |= {record[1]: record[18]}
         elif text in (record[12], record[13], record[14]):
             have_trait_dict |= {f"{record[1]}(夢)": record[18]}
         elif text in (record[15], record[16]):
@@ -69,8 +66,6 @@ def res_data(text: str) -> dict:
 
     if len(have_type_dict):
         res = FlexSendMessage(alt_text="type", contents=PG.create_have_type_list(text, have_type_dict))
-    elif len(have_both_types_dict):
-        res = FlexSendMessage(alt_text="both type", contents=PG.create_have_both_types_list(text, have_both_types_dict))
     elif len(have_trait_dict):
         res = FlexSendMessage(alt_text="trait", contents=PG.create_have_trait_list(text, have_trait_dict))
     elif len(have_egg_group_dict):
