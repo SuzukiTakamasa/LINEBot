@@ -2,8 +2,8 @@
 
 class PayloadGenerator:
     @classmethod
-    def passer(cls):
-        pass
+    def spacer(cls):
+        return {"type": "spacer", "size": "xs"}
 
     @classmethod
     def create_status_data(cls, record: list) -> dict:
@@ -347,7 +347,7 @@ class PayloadGenerator:
         "color": "#1D2B6BFF",
         "height": "sm",
         "style": "primary"
-      } if record[13] != "-" else cls.passer(),
+      } if record[13] != "-" else cls.spacer(),
       {
         "type": "text",
         "text": "同じ卵グループを持つポケモンを検索",
@@ -375,7 +375,7 @@ class PayloadGenerator:
         "color": "#1D2B6BFF",
         "height": "sm",
         "style": "primary"
-      } if record[16] != "-" else cls.passer()
+      } if record[16] != "-" else cls.spacer()
     ]
   }
 }
