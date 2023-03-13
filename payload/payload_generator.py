@@ -370,7 +370,7 @@ class PayloadGenerator:
             status["body"]["contents"][6] = {"type": "spacer", "size": "xs"}
         
         if record[16] != "-":
-            status["body"]["contents"][9] = {
+            status["body"]["contents"].append({
             "type": "button",
             "action": {
             "type": "message",
@@ -380,7 +380,7 @@ class PayloadGenerator:
             "color": "#1D2B6BFF",
             "height": "sm",
             "style": "primary"
-        }
+        })
         else:
             status["body"]["contents"][9] = {"type": "spacer", "size": "xs"}
 
