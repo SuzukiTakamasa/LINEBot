@@ -415,6 +415,7 @@ class PayloadGenerator:
       {
         "type": "box",
         "layout": "vertical",
+        "spacing": "md",
         "contents": [
           {
             "type": "box",
@@ -478,6 +479,7 @@ class PayloadGenerator:
       {
         "type": "box",
         "layout": "vertical",
+        "spacing": "md",
         "contents": [
           {
             "type": "box",
@@ -540,6 +542,7 @@ class PayloadGenerator:
       {
         "type": "box",
         "layout": "vertical",
+        "spacing": "md",
         "contents": [
           {
             "type": "box",
