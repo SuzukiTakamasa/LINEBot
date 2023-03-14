@@ -368,7 +368,7 @@ class PayloadGenerator:
         })
             
         if record[14] != "-":
-            status["body"]["contents"].insert(7, {
+            status["body"]["contents"].insert(6, {
             "type": "button",
             "action": {
             "type": "message",
