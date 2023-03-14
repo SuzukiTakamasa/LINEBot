@@ -1,4 +1,4 @@
-
+import re
 
 class PayloadGenerator:
     @classmethod
@@ -12,7 +12,7 @@ class PayloadGenerator:
     "contents": [
       {
         "type": "box",
-        "layout": "horizontal",
+        "layout": "vertical",
         "contents": [
           {
             "type": "text",
@@ -25,7 +25,7 @@ class PayloadGenerator:
           {
             "type": "image",
             "url": record[18],
-            "align": "end",
+            "align": "start",
             "size": "xxs"
           }
         ]
@@ -407,7 +407,7 @@ class PayloadGenerator:
     "contents": [
       {
         "type": "text",
-        "text": f"「{text}」タイプを持つポケモン",
+        "text": f"「{text}」タイプを持つポケモン" if not re.findall(r'^.+\s.+$') else re.sub(r'\s', '/', text),
         "weight": "bold",
         "size": "md",
         "contents": []
