@@ -419,7 +419,7 @@ class PayloadGenerator:
           {
             "type": "box",
             "layout": "vertical",
-            "margin": "none",
+            "spacing": "md",
             "contents": [
               {
                 "type": "text",
@@ -482,7 +482,7 @@ class PayloadGenerator:
           {
             "type": "box",
             "layout": "vertical",
-            "margin": "none",
+            "spacing": "md",
             "contents": [
               {
                 "type": "text",
@@ -544,7 +544,7 @@ class PayloadGenerator:
           {
             "type": "box",
             "layout": "vertical",
-            "margin": "none",
+            "spacing": "md",
             "contents": [
               {
                 "type": "text",
