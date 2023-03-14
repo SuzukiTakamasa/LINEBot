@@ -58,7 +58,7 @@ def res_data(text: str) -> dict:
         elif text in (record[3], record[4]) or re.findall(r'^{}\s{}$'.format(record[3], record[4]), text) or re.findall(r'^{}\s{}$'.format(record[4], record[3]), text):
             have_type_dict |= {record[1]: record[18]}
         elif text in (record[12], record[13], record[14]):
-            have_trait_dict |= {f"{record[1]}(夢)": record[18]}
+            have_trait_dict |= {record[1]: record[18]}
         elif text in (record[15], record[16]):
             have_egg_group_dict |= {record[1]: record[18]}
         elif re.findall(r'^{}\(.+\)$'.format(text), record[1]):
