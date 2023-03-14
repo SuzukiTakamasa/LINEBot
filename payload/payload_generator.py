@@ -366,6 +366,19 @@ class PayloadGenerator:
             "height": "sm",
             "style": "primary"
         })
+            
+        if record[14] != "-":
+            status["body"]["contents"].insert(7, {
+            "type": "button",
+            "action": {
+            "type": "message",
+            "label": f"「{record[14]}」で検索",
+            "text": record[14]
+            },
+            "color": "#1D2B6BFF",
+            "height": "sm",
+            "style": "primary"
+        })
         
         if record[16] != "-":
             status["body"]["contents"].append({
