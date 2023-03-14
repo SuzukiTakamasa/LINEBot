@@ -407,7 +407,7 @@ class PayloadGenerator:
     "contents": [
       {
         "type": "text",
-        "text": f"「{text}」タイプを持つポケモン" if not re.findall(r'^.+\s.+$') else re.sub(r'\s', '/', text),
+        "text": f"「{text}」タイプを持つポケモン" if not re.findall(r'^.+\s.+$', text) else re.sub(r'\s', '/', text),
         "weight": "bold",
         "size": "md",
         "contents": []
