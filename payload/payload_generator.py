@@ -18,7 +18,7 @@ class PayloadGenerator:
             "type": "text",
             "text": record[1],
             "weight": "bold",
-            "size": "xl",
+            "size": "lg",
             "align": "start",
             "contents": []
           },
@@ -409,12 +409,6 @@ class PayloadGenerator:
             "layout": "horizontal",
             "contents": [
               {
-                "type": "image",
-                "url": v,
-                "align": "start",
-                "size": "xxs"
-              },
-              {
                 "type": "text",
                 "text": k,
                 "weight": "bold",
@@ -422,6 +416,12 @@ class PayloadGenerator:
                 "align": "start",
                 "margin": "sm",
                 "contents": []
+              },
+              {
+                "type": "image",
+                "url": v,
+                "align": "end",
+                "size": "xxs"
               }
             ]
           } for k, v in have_type_dict.items()
@@ -458,12 +458,6 @@ class PayloadGenerator:
             "layout": "horizontal",
             "contents": [
               {
-                "type": "image",
-                "url": v,
-                "align": "start",
-                "size": "xxs"
-              },
-              {
                 "type": "text",
                 "text": k,
                 "weight": "bold",
@@ -471,6 +465,12 @@ class PayloadGenerator:
                 "align": "start",
                 "margin": "sm",
                 "contents": []
+              },
+              {
+                "type": "image",
+                "url": v,
+                "align": "end",
+                "size": "xxs"
               }
             ]
           } for k, v in have_trait_dict.items()
@@ -506,12 +506,6 @@ class PayloadGenerator:
             "layout": "horizontal",
             "contents": [
               {
-                "type": "image",
-                "url": v,
-                "align": "start",
-                "size": "xxs"
-              },
-              {
                 "type": "text",
                 "text": k,
                 "weight": "bold",
@@ -519,6 +513,12 @@ class PayloadGenerator:
                 "align": "start",
                 "margin": "sm",
                 "contents": []
+              },
+              {
+                "type": "image",
+                "url": v,
+                "align": "end",
+                "size": "xxs"
               }
             ]
           } for k, v in have_egg_group_dict.items()
