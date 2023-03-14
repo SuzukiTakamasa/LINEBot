@@ -415,26 +415,40 @@ class PayloadGenerator:
       {
         "type": "box",
         "layout": "vertical",
-        "spacing": "sm",
         "contents": [
           {
             "type": "box",
-            "layout": "horizontal",
+            "layout": "vertical",
+            "margin": "none",
             "contents": [
               {
                 "type": "text",
                 "text": k,
                 "weight": "bold",
-                "size": "lg",
-                "align": "start",
-                "margin": "sm",
                 "contents": []
               },
               {
-                "type": "image",
-                "url": v,
-                "align": "end",
-                "size": "xxs"
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                  {
+                    "type": "image",
+                    "url": v,
+                    "align": "start",
+                    "size": "xxs"
+                  },
+                  {
+                    "type": "button",
+                    "action": {
+                      "type": "message",
+                      "label": "ステータス",
+                      "text": k
+                    },
+                    "color": "#1D2B6BFF",
+                    "height": "sm",
+                    "style": "primary"
+                  }
+                ]
               }
             ]
           } for k, v in have_type_dict.items()
