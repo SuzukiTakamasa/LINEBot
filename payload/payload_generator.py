@@ -457,7 +457,7 @@ class PayloadGenerator:
       },
       {
         "type": "text",
-        "text": "※最大50件表示",
+        "text": "※図鑑番号の昇順に最大50件表示",
         "size": "xs",
         "color": "#AAAAAAFF",
         "contents": []
@@ -528,7 +528,7 @@ class PayloadGenerator:
       },
       {
         "type": "text",
-        "text": "※最大50件表示",
+        "text": "※図鑑番号の昇順に最大50件表示",
         "size": "xs",
         "color": "#AAAAAAFF",
         "contents": []
@@ -598,7 +598,7 @@ class PayloadGenerator:
       },
       {
         "type": "text",
-        "text": "※最大50件表示",
+        "text": "※図鑑番号の昇順に最大50件表示",
         "size": "xs",
         "color": "#AAAAAAFF",
         "contents": []
