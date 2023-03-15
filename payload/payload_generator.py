@@ -454,6 +454,13 @@ class PayloadGenerator:
             ]
           } for k, v in have_type_dict.items()
         ]
+      },
+      {
+        "type": "text",
+        "text": "※最大50件表示",
+        "size": "xs",
+        "color": "#AAAAAAFF",
+        "contents": []
       }
     ]
   }
@@ -518,6 +525,13 @@ class PayloadGenerator:
             ]
           } for k, v in have_trait_dict.items()
         ]
+      },
+      {
+        "type": "text",
+        "text": "※最大50件表示",
+        "size": "xs",
+        "color": "#AAAAAAFF",
+        "contents": []
       }
     ]
   }
@@ -581,6 +595,13 @@ class PayloadGenerator:
             ]
           } for k, v in have_egg_group_dict.items()
         ]
+      },
+      {
+        "type": "text",
+        "text": "※最大50件表示",
+        "size": "xs",
+        "color": "#AAAAAAFF",
+        "contents": []
       }
     ]
   }
