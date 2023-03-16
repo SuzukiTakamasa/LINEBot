@@ -400,7 +400,7 @@ class PayloadGenerator:
     def create_have_type_list(cls, text: str, have_type_dict: dict) -> dict:
        carousel_type_list = []
        for i in range(0, len(have_type_dict), 50):
-           carousel_type_list.append(dict(list(have_type_dict.items()[i:i+50])))
+           carousel_type_list.append(list(have_type_dict.items()[i:i+50]))
 
        types =  {
            "type": "carousel",
