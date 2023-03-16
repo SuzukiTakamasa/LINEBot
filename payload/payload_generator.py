@@ -368,7 +368,7 @@ class PayloadGenerator:
         })
             
         if record[14] != "-":
-            status["body"]["contents"].insert(6, {
+            status["body"]["contents"].insert(6 if record[13] == "-" else 7, {
             "type": "button",
             "action": {
             "type": "message",
@@ -398,73 +398,84 @@ class PayloadGenerator:
     
     @classmethod
     def create_have_type_list(cls, text: str, have_type_dict: dict) -> dict:
-       return {
-  "type": "bubble",
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "spacing": "md",
-    "contents": [
-      {
-        "type": "text",
-        "text": f"「{text}」タイプを持つポケモン" if not re.findall(r'^.+\s.+$', text) else "{}タイプを持つポケモン".format(re.sub(r'\s', '/', text)),
-        "weight": "bold",
-        "size": "md",
-        "contents": []
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "spacing": "md",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "vertical",
-            "spacing": "md",
-            "contents": [
+       carousel_type_list = []
+       for i in range(0, len(have_type_dict), 50):
+           carousel_type_list.append(dict(list(have_type_dict.items()[i:i+50])))
+
+       types =  {
+           "type": "carousel",
+           "contents": [
               {
-                "type": "text",
-                "text": k,
-                "weight": "bold",
-                "contents": []
-              },
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "image",
-                    "url": v,
-                    "align": "start",
-                    "size": "xxs"
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "message",
-                      "label": "ステータス",
-                      "text": k
+                "type": "bubble",
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "spacing": "md",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": f"「{text}」タイプを持つポケモン" if not re.findall(r'^.+\s.+$', text) else "{}タイプを持つポケモン".format(re.sub(r'\s', '/', text)),
+                      "weight": "bold",
+                      "size": "md",
+                      "contents": []
                     },
-                    "color": "#1D2B6BFF",
-                    "height": "sm",
-                    "style": "primary"
-                  }
-                ]
-              }
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "spacing": "md",
+                      "contents": [
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "md",
+                          "contents": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "text": "※図鑑番号の昇順に最大50件表示",
+                      "size": "xs",
+                      "color": "#AAAAAAFF",
+                      "contents": []
+                    }
+                  ]
+                }
+              } for _ in range(len(carousel_type_list))
             ]
-          } for k, v in have_type_dict.items()
-        ]
-      },
-      {
-        "type": "text",
-        "text": "※図鑑番号の昇順に最大50件表示",
-        "size": "xs",
-        "color": "#AAAAAAFF",
-        "contents": []
-      }
-    ]
-  }
-}
+          }
+       
+       for c in range(len(carousel_type_list)):
+            types["contents"][c]["body"]["contents"][1]["contents"].append([{
+                              "type": "text",
+                              "text": k,
+                              "weight": "bold",
+                              "contents": []
+                            },
+                            {
+                              "type": "box",
+                              "layout": "horizontal",
+                              "contents": [
+                                {
+                                  "type": "image",
+                                  "url": v,
+                                  "align": "start",
+                                  "size": "xxs"
+                                },
+                                {
+                                  "type": "button",
+                                  "action": {
+                                    "type": "message",
+                                    "label": "ステータス",
+                                    "text": k
+                                  },
+                                  "color": "#1D2B6BFF",
+                                  "height": "sm",
+                                  "style": "primary"
+                                }
+                              ]
+                            }] for k, v in carousel_type_list[c].items())
+       return types       
 
     
     @classmethod
