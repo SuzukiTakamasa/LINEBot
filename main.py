@@ -57,8 +57,8 @@ def res_data(text: str) -> dict:
             break
         elif text in (record[3], record[4]) or re.findall(r'^{}\s{}$'.format(record[3], record[4]), text) or re.findall(r'^{}\s{}$'.format(record[4], record[3]), text):
             have_type_dict |= {record[1]: record[18]}
-            if len(have_type_dict) > 50:
-                break
+            #if len(have_type_dict) > 50:
+                #break
         elif text in (record[12], record[13], record[14]):
             have_trait_dict |= {record[1]: record[18]}
             if len(have_trait_dict) > 50:

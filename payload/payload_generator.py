@@ -398,73 +398,82 @@ class PayloadGenerator:
     
     @classmethod
     def create_have_type_list(cls, text: str, have_type_dict: dict) -> dict:
-       return {
-  "type": "bubble",
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "spacing": "md",
-    "contents": [
-      {
-        "type": "text",
-        "text": f"「{text}」タイプを持つポケモン" if not re.findall(r'^.+\s.+$', text) else "{}タイプを持つポケモン".format(re.sub(r'\s', '/', text)),
-        "weight": "bold",
-        "size": "md",
-        "contents": []
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "spacing": "md",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "vertical",
-            "spacing": "md",
-            "contents": [
-              {
-                "type": "text",
-                "text": k,
-                "weight": "bold",
-                "contents": []
-              },
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "image",
-                    "url": v,
-                    "align": "start",
-                    "size": "xxs"
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "message",
-                      "label": "ステータス",
-                      "text": k
+       carousel_columns = []
+       for i in range(0, len(have_type_dict), 50):
+           carousel_columns.append(dict(list(have_type_dict.items())[i:i+50]))
+           
+       types = {"type": "carousel",
+                "contents": [{
+                "type": "bubble",
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "spacing": "md",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": f"「{text}」タイプを持つポケモン" if not re.findall(r'^.+\s.+$', text) else "{}タイプを持つポケモン".format(re.sub(r'\s', '/', text)),
+                      "weight": "bold",
+                      "size": "md",
+                      "contents": []
                     },
-                    "color": "#1D2B6BFF",
-                    "height": "sm",
-                    "style": "primary"
-                  }
-                ]
-              }
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "spacing": "md",
+                      "contents": [
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "md",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": k,
+                              "weight": "bold",
+                              "contents": []
+                            },
+                            {
+                              "type": "box",
+                              "layout": "horizontal",
+                              "contents": [
+                                {
+                                  "type": "image",
+                                  "url": v,
+                                  "align": "start",
+                                  "size": "xxs"
+                                },
+                                {
+                                  "type": "button",
+                                  "action": {
+                                    "type": "message",
+                                    "label": "ステータス",
+                                    "text": k
+                                  },
+                                  "color": "#1D2B6BFF",
+                                  "height": "sm",
+                                  "style": "primary"
+                                }
+                              ]
+                            }
+                          ]
+                        } for k, v in column.items()
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "text": "※図鑑番号の昇順に最大50件表示",
+                      "size": "xs",
+                      "color": "#AAAAAAFF",
+                      "contents": []
+                    }
+                  ]
+                }
+              } for column in carousel_columns
             ]
-          } for k, v in have_type_dict.items()
-        ]
-      },
-      {
-        "type": "text",
-        "text": "※図鑑番号の昇順に最大50件表示",
-        "size": "xs",
-        "color": "#AAAAAAFF",
-        "contents": []
-      }
-    ]
-  }
-}
+          }
+       
+       return types
 
     
     @classmethod
