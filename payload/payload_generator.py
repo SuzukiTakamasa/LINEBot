@@ -442,17 +442,6 @@ class PayloadGenerator:
                                   "url": v,
                                   "align": "start",
                                   "size": "xxs"
-                                },
-                                {
-                                  "type": "button",
-                                  "action": {
-                                    "type": "message",
-                                    "label": "ステータス",
-                                    "text": k
-                                  },
-                                  "color": "#1D2B6BFF",
-                                  "height": "sm",
-                                  "style": "primary"
                                 }
                               ]
                             }
