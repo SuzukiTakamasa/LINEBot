@@ -459,13 +459,6 @@ class PayloadGenerator:
                           ]
                         } for k, v in column.items()
                       ]
-                    },
-                    {
-                      "type": "text",
-                      "text": "※図鑑番号の昇順に最大50件表示",
-                      "size": "xs",
-                      "color": "#AAAAAAFF",
-                      "contents": []
                     }
                   ]
                 }
@@ -478,143 +471,148 @@ class PayloadGenerator:
     
     @classmethod
     def create_have_trait_list(cls, text: str, have_trait_dict: dict) -> dict:
-        return {
-  "type": "bubble",
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "spacing": "md",
-    "contents": [
-      {
-        "type": "text",
-        "text": f"特性「{text}」を持つポケモン",
-        "weight": "bold",
-        "size": "md",
-        "contents": []
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "spacing": "md",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "vertical",
-            "spacing": "md",
-            "contents": [
-              {
-                "type": "text",
-                "text": k,
-                "weight": "bold",
-                "contents": []
-              },
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "image",
-                    "url": v,
-                    "align": "start",
-                    "size": "xxs"
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "message",
-                      "label": "ステータス",
-                      "text": k
+        carousel_columns = []
+        for i in range(0, len(have_trait_dict), 50):
+            carousel_columns.append(dict(list(have_trait_dict.items())[i:i+50]))
+
+        traits = {"type": "carousel",
+                "contents": [{
+                "type": "bubble",
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "spacing": "md",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": f"特性「{text}」を持つポケモン",
+                      "weight": "bold",
+                      "size": "md",
+                      "contents": []
                     },
-                    "color": "#1D2B6BFF",
-                    "height": "sm",
-                    "style": "primary"
-                  }
-                ]
-              }
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "spacing": "md",
+                      "contents": [
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "md",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": k,
+                              "weight": "bold",
+                              "contents": []
+                            },
+                            {
+                              "type": "box",
+                              "layout": "horizontal",
+                              "contents": [
+                                {
+                                  "type": "image",
+                                  "url": v,
+                                  "align": "start",
+                                  "size": "xxs"
+                                },
+                                {
+                                  "type": "button",
+                                  "action": {
+                                    "type": "message",
+                                    "label": "ステータス",
+                                    "text": k
+                                  },
+                                  "color": "#1D2B6BFF",
+                                  "height": "sm",
+                                  "style": "primary"
+                                }
+                              ]
+                            }
+                          ]
+                        } for k, v in column.items()
+                      ]
+                    }
+                  ]
+                }
+              } for column in carousel_columns
             ]
-          } for k, v in have_trait_dict.items()
-        ]
-      },
-      {
-        "type": "text",
-        "text": "※最大50件表示",
-        "size": "xs",
-        "color": "#AAAAAAFF",
-        "contents": []
-      }
-    ]
-  }
-}
+          }
+        
+        return traits
     
     @classmethod
     def create_have_egg_group_list(cls, text: str, have_egg_group_dict: dict) -> dict:
-        return {
-  "type": "bubble",
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "spacing": "md",
-    "contents": [
-      {
-        "type": "text",
-        "text": f"卵グループ「{text}」のポケモン",
-        "weight": "bold",
-        "size": "md",
-        "contents": []
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "spacing": "md",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "vertical",
-            "spacing": "md",
-            "contents": [
-              {
-                "type": "text",
-                "text": k,
-                "weight": "bold",
-                "contents": []
-              },
-              {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                  {
-                    "type": "image",
-                    "url": v,
-                    "align": "start",
-                    "size": "xxs"
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "message",
-                      "label": "ステータス",
-                      "text": k
+        carousel_columns = []
+        for i in range(0, len(have_egg_group_dict), 50):
+            carousel_columns.append(dict(list(have_egg_group_dict.items())[i:i+50]))
+
+        egg_groups = {"type": "carousel",
+                "contents": [{
+                "type": "bubble",
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "spacing": "md",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": f"卵グループ「{text}」のポケモン",
+                      "weight": "bold",
+                      "size": "md",
+                      "contents": []
                     },
-                    "color": "#1D2B6BFF",
-                    "height": "sm",
-                    "style": "primary"
-                  }
-                ]
-              }
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "spacing": "md",
+                      "contents": [
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "md",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": k,
+                              "weight": "bold",
+                              "contents": []
+                            },
+                            {
+                              "type": "box",
+                              "layout": "horizontal",
+                              "contents": [
+                                {
+                                  "type": "image",
+                                  "url": v,
+                                  "align": "start",
+                                  "size": "xxs"
+                                },
+                                {
+                                  "type": "button",
+                                  "action": {
+                                    "type": "message",
+                                    "label": "ステータス",
+                                    "text": k
+                                  },
+                                  "color": "#1D2B6BFF",
+                                  "height": "sm",
+                                  "style": "primary"
+                                }
+                              ]
+                            }
+                          ]
+                        } for k, v in column.items()
+                      ]
+                    }
+                  ]
+                }
+              } for column in carousel_columns
             ]
-          } for k, v in have_egg_group_dict.items()
-        ]
-      },
-      {
-        "type": "text",
-        "text": "※最大50件表示",
-        "size": "xs",
-        "color": "#AAAAAAFF",
-        "contents": []
-      }
-    ]
-  }
-}
+          }
+        
+        return egg_groups
+         
     
     @classmethod
     def create_alias_list(cls, have_alias_list: list) -> dict:
