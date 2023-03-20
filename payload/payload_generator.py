@@ -397,10 +397,10 @@ class PayloadGenerator:
 
     
     @classmethod
-    def create_have_type_list(cls, text: str, have_type_dict: dict) -> dict:
+    def create_have_type_list(cls, text: str, have_type_list: list) -> dict:
        carousel_columns = []
-       for i in range(0, len(have_type_dict), 50):
-           carousel_columns.append(dict(list(have_type_dict.items())[i:i+50]))
+       for i in range(0, len(have_type_list), 50):
+           carousel_columns.append(have_type_list[i:i+50])
            
        types = {"type": "carousel",
                 "contents": [{
@@ -422,42 +422,19 @@ class PayloadGenerator:
                       "layout": "vertical",
                       "spacing": "md",
                       "contents": [
-                        {
-                          "type": "box",
-                          "layout": "vertical",
-                          "spacing": "md",
-                          "contents": [
                             {
-                              "type": "text",
-                              "text": k,
-                              "weight": "bold",
-                              "contents": []
-                            },
-                            {
-                              "type": "box",
-                              "layout": "horizontal",
-                              "contents": [
-                                {
-                                  "type": "image",
-                                  "url": v,
-                                  "align": "start",
-                                  "size": "xxs"
-                                },
-                                {
-                                  "type": "button",
-                                  "action": {
-                                    "type": "message",
-                                    "label": "ステータス",
-                                    "text": k
-                                  },
-                                  "color": "#1D2B6BFF",
-                                  "height": "sm",
-                                  "style": "primary"
-                                }
-                              ]
-                            }
-                          ]
-                        } for k, v in column.items()
+                          "type": "button",
+                          "action": {
+                            "type": "message",
+                            "label": name,
+                            "text": name
+                          },
+                          "color": "#1D2B6BFF",
+                          "margin": "none",
+                          "height": "sm",
+                          "style": "primary",
+                          "gravity": "top"
+                        } for name in column
                       ]
                     }
                   ]
@@ -470,10 +447,10 @@ class PayloadGenerator:
 
     
     @classmethod
-    def create_have_trait_list(cls, text: str, have_trait_dict: dict) -> dict:
+    def create_have_trait_list(cls, text: str, have_trait_list: list) -> dict:
         carousel_columns = []
-        for i in range(0, len(have_trait_dict), 50):
-            carousel_columns.append(dict(list(have_trait_dict.items())[i:i+50]))
+        for i in range(0, len(have_trait_list), 50):
+            carousel_columns.append(have_trait_list[i:i+50])
 
         traits = {"type": "carousel",
                 "contents": [{
@@ -495,42 +472,19 @@ class PayloadGenerator:
                       "layout": "vertical",
                       "spacing": "md",
                       "contents": [
-                        {
-                          "type": "box",
-                          "layout": "vertical",
-                          "spacing": "md",
-                          "contents": [
-                            {
-                              "type": "text",
-                              "text": k,
-                              "weight": "bold",
-                              "contents": []
-                            },
-                            {
-                              "type": "box",
-                              "layout": "horizontal",
-                              "contents": [
-                                {
-                                  "type": "image",
-                                  "url": v,
-                                  "align": "start",
-                                  "size": "xxs"
-                                },
-                                {
-                                  "type": "button",
-                                  "action": {
-                                    "type": "message",
-                                    "label": "ステータス",
-                                    "text": k
-                                  },
-                                  "color": "#1D2B6BFF",
-                                  "height": "sm",
-                                  "style": "primary"
-                                }
-                              ]
-                            }
-                          ]
-                        } for k, v in column.items()
+                          {
+                          "type": "button",
+                          "action": {
+                            "type": "message",
+                            "label": name,
+                            "text": name
+                          },
+                          "color": "#1D2B6BFF",
+                          "margin": "none",
+                          "height": "sm",
+                          "style": "primary",
+                          "gravity": "top"
+                        } for name in column
                       ]
                     }
                   ]
@@ -542,10 +496,10 @@ class PayloadGenerator:
         return traits
     
     @classmethod
-    def create_have_egg_group_list(cls, text: str, have_egg_group_dict: dict) -> dict:
+    def create_have_egg_group_list(cls, text: str, have_egg_group_list: list) -> dict:
         carousel_columns = []
-        for i in range(0, len(have_egg_group_dict), 50):
-            carousel_columns.append(dict(list(have_egg_group_dict.items())[i:i+50]))
+        for i in range(0, len(have_egg_group_list), 50):
+            carousel_columns.append(have_egg_group_list[i:i+50])
 
         egg_groups = {"type": "carousel",
                 "contents": [{
@@ -568,41 +522,18 @@ class PayloadGenerator:
                       "spacing": "md",
                       "contents": [
                         {
-                          "type": "box",
-                          "layout": "vertical",
-                          "spacing": "md",
-                          "contents": [
-                            {
-                              "type": "text",
-                              "text": k,
-                              "weight": "bold",
-                              "contents": []
-                            },
-                            {
-                              "type": "box",
-                              "layout": "horizontal",
-                              "contents": [
-                                {
-                                  "type": "image",
-                                  "url": v,
-                                  "align": "start",
-                                  "size": "xxs"
-                                },
-                                {
-                                  "type": "button",
-                                  "action": {
-                                    "type": "message",
-                                    "label": "ステータス",
-                                    "text": k
-                                  },
-                                  "color": "#1D2B6BFF",
-                                  "height": "sm",
-                                  "style": "primary"
-                                }
-                              ]
-                            }
-                          ]
-                        } for k, v in column.items()
+                          "type": "button",
+                          "action": {
+                            "type": "message",
+                            "label": name,
+                            "text": name
+                          },
+                          "color": "#1D2B6BFF",
+                          "margin": "none",
+                          "height": "sm",
+                          "style": "primary",
+                          "gravity": "top"
+                        } for name in column
                       ]
                     }
                   ]

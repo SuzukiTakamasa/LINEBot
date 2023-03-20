@@ -46,9 +46,9 @@ def res_data(text: str) -> dict:
         data = [row for row in csv.reader(f)]
 
     res : FlexSendMessage | TextSendMessage | None = None
-    have_type_dict :dict = {}
-    have_trait_dict :dict = {}
-    have_egg_group_dict :dict = {}
+    have_type_list :list = []
+    have_trait_list :list = []
+    have_egg_group_list :list = []
     have_alias_list :list = []
         
     for record in data:
@@ -56,20 +56,20 @@ def res_data(text: str) -> dict:
             res = FlexSendMessage(alt_text="[status]", contents=PG.create_status_data(record))
             break
         elif text in (record[3], record[4]) or re.findall(r'^{}\s{}$'.format(record[3], record[4]), text) or re.findall(r'^{}\s{}$'.format(record[4], record[3]), text):
-            have_type_dict |= {record[1]: record[18]}
+            have_type_list.append(record[1])
         elif text in (record[12], record[13], record[14]):
-            have_trait_dict |= {record[1]: record[18]}
+            have_trait_list.append(record[1])
         elif text in (record[15], record[16]):
-            have_egg_group_dict |= {record[1]: record[18]}
+            have_egg_group_list.append(record[1])
         elif re.findall(r'^{}\(.+\)$'.format(text), record[1]):
             have_alias_list.append(record[1])
 
-    if len(have_type_dict):
-        res = FlexSendMessage(alt_text="[type]", contents=PG.create_have_type_list(text, have_type_dict))
-    elif len(have_trait_dict):
-        res = FlexSendMessage(alt_text="[trait]", contents=PG.create_have_trait_list(text, have_trait_dict))
-    elif len(have_egg_group_dict):
-        res = FlexSendMessage(alt_text="[egg group]", contents=PG.create_have_egg_group_list(text, have_egg_group_dict))
+    if len(have_type_list):
+        res = FlexSendMessage(alt_text="[type]", contents=PG.create_have_type_list(text, have_type_list))
+    elif len(have_trait_list):
+        res = FlexSendMessage(alt_text="[trait]", contents=PG.create_have_trait_list(text, have_trait_list))
+    elif len(have_egg_group_list):
+        res = FlexSendMessage(alt_text="[egg group]", contents=PG.create_have_egg_group_list(text, have_egg_group_list))
     elif len(have_alias_list):
         res = FlexSendMessage(alt_text="[alias]", contents=PG.create_alias_list(have_alias_list))
 
