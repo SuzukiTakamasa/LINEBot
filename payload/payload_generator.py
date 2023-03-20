@@ -420,7 +420,7 @@ class PayloadGenerator:
                     {
                       "type": "box",
                       "layout": "vertical",
-                      "spacing": "sm",
+                      "spacing": "md",
                       "contents": [
                             {
                           "type": "button",
@@ -430,7 +430,7 @@ class PayloadGenerator:
                             "text": name
                           },
                           "color": "#1D2B6BFF",
-                          "margin": "none",
+                          "margin": "sm",
                           "height": "sm",
                           "style": "primary",
                           "gravity": "top"
@@ -470,7 +470,7 @@ class PayloadGenerator:
                     {
                       "type": "box",
                       "layout": "vertical",
-                      "spacing": "sm",
+                      "spacing": "md",
                       "contents": [
                           {
                           "type": "button",
@@ -480,7 +480,7 @@ class PayloadGenerator:
                             "text": name
                           },
                           "color": "#1D2B6BFF",
-                          "margin": "none",
+                          "margin": "sm",
                           "height": "sm",
                           "style": "primary",
                           "gravity": "top"
@@ -519,7 +519,7 @@ class PayloadGenerator:
                     {
                       "type": "box",
                       "layout": "vertical",
-                      "spacing": "sm",
+                      "spacing": "md",
                       "contents": [
                         {
                           "type": "button",
@@ -529,7 +529,7 @@ class PayloadGenerator:
                             "text": name
                           },
                           "color": "#1D2B6BFF",
-                          "margin": "none",
+                          "margin": "sm",
                           "height": "sm",
                           "style": "primary",
                           "gravity": "top"
