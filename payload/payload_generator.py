@@ -412,7 +412,7 @@ class PayloadGenerator:
                   "contents": [
                     {
                       "type": "text",
-                      "text": f"「{text}」タイプを持つポケモン" if not re.findall(r'^.+\s.+$', text) else "{}タイプを持つポケモン".format(re.sub(r'\s', '/', text)),
+                      "text": f"「{text}」タイプのポケモン" if not re.findall(r'^.+\s.+$', text) else "{}タイプのポケモン".format(re.sub(r'\s', '/', text)),
                       "weight": "bold",
                       "size": "md",
                       "contents": []
@@ -462,7 +462,7 @@ class PayloadGenerator:
                   "contents": [
                     {
                       "type": "text",
-                      "text": f"特性「{text}」を持つポケモン",
+                      "text": f"「{text}」を持つポケモン",
                       "weight": "bold",
                       "size": "md",
                       "contents": []
@@ -511,7 +511,7 @@ class PayloadGenerator:
                   "contents": [
                     {
                       "type": "text",
-                      "text": f"卵グループ「{text}」のポケモン",
+                      "text": f"「{text}」のポケモン",
                       "weight": "bold",
                       "size": "md",
                       "contents": []
