@@ -11,6 +11,11 @@
             "src": "/callback",
             "methods": ["POST"],
             "dest": "main.py"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "main.py"
         }
     ]
 }
+
