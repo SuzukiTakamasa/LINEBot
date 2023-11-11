@@ -42,11 +42,6 @@ def callback():
     return 'OK'
 
 
-@app.route("/", methods=['GET'])
-def healthcheck():
-    return 'Healthcheck OK'
-
-
 def res_data(text: str) -> dict:
     with open('./master/master.csv', 'r') as f:
         data = [row for row in csv.reader(f)]
