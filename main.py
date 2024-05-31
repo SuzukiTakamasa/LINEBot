@@ -4,6 +4,9 @@ import csv
 from dotenv import load_dotenv
 from flask import Flask, request, abort
 
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
 from payload.payload_generator import PayloadGenerator as PG
 
 from linebot import (
@@ -21,6 +24,11 @@ load_dotenv()
 
 line_bot_api = LineBotApi(os.environ["CHANNEL_ACCESS_TOKEN"])
 web_hook_handler = WebhookHandler(os.environ["CHANNEL_SECRET"])
+
+scope = [
+    'https://spreadsheets.google.com/feeds',
+    'https://www.googleapis.com/auth/drive'
+]
 
 
 @app.route("/callback", methods=['POST'])
