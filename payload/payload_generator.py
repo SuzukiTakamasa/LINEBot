@@ -24,7 +24,7 @@ class PayloadGenerator:
                   },
                   {
                     "type": "image",
-                    "url": record[18],
+                    "url": record[18] if record[18] else "https://via.placeholder.com/150x150.png?text=No+Image",
                     "align": "start",
                     "size": "xxs"
                   }
@@ -54,7 +54,7 @@ class PayloadGenerator:
                     "contents": [
                       {
                         "type": "text",
-                        "text": f"第{record[2]}世代",
+                        "text": f"第{record[2]}世代" if record[2].isdigit() else f"{record[2]}",
                         "weight": "bold",
                         "flex": 0,
                         "margin": "sm",
