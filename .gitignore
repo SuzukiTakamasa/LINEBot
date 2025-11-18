@@ -17,5 +17,5 @@
 !Procfile
 !runtime.txt
 !requirements.txt
-!deploy.sh
 !vercel.json
+!pyproject.toml

@@ -1,0 +1,9 @@
+[project]
+name = "linebot-app"
+version = "0.0.1"
+description = "LINE bot app"
+requires-python = ">=3.11,<3.12"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
