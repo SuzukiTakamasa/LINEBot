@@ -19,3 +19,4 @@
 !requirements.txt
 !vercel.json
 !pyproject.toml
+!poetry.lock
